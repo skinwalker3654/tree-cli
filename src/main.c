@@ -8,7 +8,7 @@ int main(void) {
     char command[10];
     int value;
 
-    struct Node *root = NULL;
+    Node *root = NULL;
     while(1) {
         printf("prompt> ");
         if(fgets(input,sizeof(input),stdin)==NULL) {
@@ -17,54 +17,54 @@ int main(void) {
         }
 
         input[strcspn(input,"\n")] = 0;
-        int persed = sscanf(input,"%s %d",command,&value);
+        int parsed = sscanf(input,"%s %d",command,&value);
 
         if(strcmp(command,"add")==0) {  //add
-            if(parser(persed,2)==1) {
+            if(parser(parsed,2)==1) {
                 insert_node(&root,value);
                 continue;
             }
         } else if(strcmp(command,"del")==0) { //del
-            if(parser(persed,2)==1) {
+            if(parser(parsed,2)==1) {
                 delete_node(&root,value);
                 continue; 
             }
         } else if(strcmp(command,"find")==0) { //find
-            if(parser(persed,2)==1) {
+            if(parser(parsed,2)==1) {
                 search_node(root,value); 
                 printf("\n");
                 continue;
             }
         } else if(strcmp(command,"inorder")==0) { //inorder
-            if(parser(persed,1)==1) {
+            if(parser(parsed,1)==1) {
                 inorder(root);
                 printf("\n");
                 continue; 
             }
         } else if(strcmp(command,"preorder")==0) { //preorder
-            if(parser(persed,1)==1) {
+            if(parser(parsed,1)==1) {
                 preorder(root);
                 printf("\n");
                 continue; 
             }
         } else if(strcmp(command,"postorder")==0) { //postorder
-            if(parser(persed,1)==1) {
+            if(parser(parsed,1)==1) {
                 postorder(root);
                 printf("\n");
                 continue; 
             }
         } else if(strcmp(command,"help")==0) { //help
-            if(parser(persed,1)==1) {
+            if(parser(parsed,1)==1) {
                 help_command();
                 continue; 
             }
         } else if(strcmp(command,"cls")==0) { //cls
-            if(parser(persed,1)==1) {
+            if(parser(parsed,1)==1) {
                 system("clear");
                 continue; 
             }
         } else if(strcmp(command,"exit")==0) { //exit
-            if(parser(persed,1)==1) {
+            if(parser(parsed,1)==1) {
                 printf("Exiting...\n");
                 free_tree(root);
                 return 0; 
