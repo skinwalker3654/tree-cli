@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include "tree.h"
 
-void insert_node(struct Node **root,int value) {
+void insert_node(Node **root,int value) {
     if(*root == NULL) {
-        struct Node *new_node = malloc(sizeof(struct Node));
+        Node *new_node = malloc(sizeof(Node));
         if(!new_node) {
             printf("Error: Memory Allocation failed\n");
             return;
@@ -18,7 +18,7 @@ void insert_node(struct Node **root,int value) {
         return;
     }
 
-    struct Node *temp = *root;
+    Node *temp = *root;
     if(value < temp->data) {
         insert_node(&temp->left,value);
     } else if(value > temp->data) {
@@ -29,30 +29,30 @@ void insert_node(struct Node **root,int value) {
     }
 }
 
-void delete_node(struct Node **root,int value) {
+void delete_node(Node **root,int value) {
     if(*root == NULL) {
         printf("Error: Value %d not found\n",value);
         return;
     }
 
-    struct Node *temp = *root;
+    Node *temp = *root;
     if(value < temp->data) {
         delete_node(&temp->left,value);
     } else if(value > temp->data) {
         delete_node(&temp->right,value);
     } else {
         if(temp->left == NULL) {
-            struct Node *right_ch = temp->right;
+            Node *right_ch = temp->right;
             free(temp);
             *root = right_ch;
             return;
         } else if(temp->right == NULL) {
-            struct Node *left_ch = temp->left;
+            Node *left_ch = temp->left;
             free(temp);
             *root = left_ch;
             return;
         } else {
-            struct Node *min_right = temp->right;
+            Node *min_right = temp->right;
             while(min_right->left != NULL) min_right = min_right->left;
             temp->data = min_right->data;
             delete_node(&temp->right,min_right->data);
@@ -61,13 +61,13 @@ void delete_node(struct Node **root,int value) {
     }
 }
 
-void search_node(struct Node *root,int value) {
+void search_node(Node *root,int value) {
     if(root == NULL) {
         printf("Tree is empty\n");
         return;
     }
 
-    struct Node *temp = root;
+    Node *temp = root;
     printf("\nRoot: %d\n",root->data);
     while(temp != NULL) {
         if(value == temp->data) {
@@ -89,7 +89,7 @@ void search_node(struct Node *root,int value) {
     printf("Value %d not found\n",value);
 }
 
-void inorder(struct Node *root) {
+void inorder(Node *root) {
     if(root != NULL) {
         inorder(root->left);
         printf("%d ",root->data);
@@ -97,7 +97,7 @@ void inorder(struct Node *root) {
     }
 }
 
-void preorder(struct Node *root) {
+void preorder(Node *root) {
     if(root != NULL) {
         printf("%d ",root->data);
         preorder(root->left);
@@ -105,7 +105,7 @@ void preorder(struct Node *root) {
     }
 }
 
-void postorder(struct Node *root) {
+void postorder(Node *root) {
     if(root != NULL) {
         postorder(root->left);
         postorder(root->right);
@@ -113,7 +113,7 @@ void postorder(struct Node *root) {
     }
 }
 
-void free_tree(struct Node *root) {
+void free_tree(Node *root) {
     if(root != NULL) {
         free_tree(root->left);
         free_tree(root->right);
@@ -134,8 +134,8 @@ void help_command() {
     printf("   postorder      : print nodes in postorder traversal\n\n");
 }
 
-int parser(int persed,int n) {
-    if(persed == n) {return 1;}
+int parser(int parsed,int n) {
+    if(parsed == n) {return 1;}
     printf("Error: Invalid arguments passed\n");
     return 0;
 }
