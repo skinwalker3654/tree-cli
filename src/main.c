@@ -10,7 +10,7 @@ int main(void) {
 
     Node *root = NULL;
     while(1) {
-        printf("prompt> ");
+        printf("Prompt@~> ");
         if(fgets(input,sizeof(input),stdin)==NULL) {
             printf("Error: Input failure\n");
             continue;
