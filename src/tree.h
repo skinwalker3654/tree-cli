@@ -15,6 +15,6 @@ void preorder(Node *root);
 void postorder(Node *root);
 void free_tree(Node *root);
 void help_command(void);
-int parser(int persed,int n);
+int parser(int parsed,int n);
 
 #endif
