@@ -25,7 +25,7 @@ tree-cli/
 you need the `gcc` compiler
 
 ```bash
-make       #compils the program
+make       #compiles the program
 make run   #runs the program
 ```
 this will compile the program into the bin folder.
