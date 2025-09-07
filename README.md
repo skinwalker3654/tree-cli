@@ -11,12 +11,13 @@ INORDER PREORDER POSTORDER.
 ```text
 tree-cli/
 ├── src/
-│ ├── main.c // Command-line interface logic
-│ ├── tree.c // BST implementation
-│ └── tree.h // Header for BST functions and structs
-├── Makefile // Builds the project into a 'bin' folder
-├── README.md // You're here!
-└── LICENSE // MIT License
+│    ├── main.c  #Command-line interface logic
+│    ├── tree.c  #BST implementation
+│    └── tree.h  #Header for BST functions and structs
+│ 
+├── Makefile  #Builds the project into a 'bin' folder
+├── README.md  #You're here!
+└── LICENSE  #MIT License
 ```
 
 ## Build instructions
